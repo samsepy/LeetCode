@@ -14,4 +14,6 @@ def move_zeroes(nums)
   count.times do
     nums.push(0)
   end
+
+  nums
 end
