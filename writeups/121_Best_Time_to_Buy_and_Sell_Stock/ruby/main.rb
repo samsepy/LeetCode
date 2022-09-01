@@ -6,9 +6,7 @@ def max_profit(prices)
     prices[i+1..].each_with_index do |y, _|
       if x < y
         profit = y - x
-        if (profit > max_profit)
-          max_profit = profit
-        end
+        max_profit = [profit, max_profit].max
       end
     end
   end
