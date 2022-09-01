@@ -13,7 +13,7 @@ def hasCycle(head)
   current_node = head
   checked_nodes = {}
   while current_node do
-    if checked_nodes.include?(current_node)
+    if checked_nodes.key?(current_node)
       return true
     else
       checked_nodes[current_node] = true
