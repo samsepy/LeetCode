@@ -12,12 +12,12 @@
 
 function hasCycle(head: ListNode | null): boolean {
   let currentNode: ListNode = head;
-  const checkedNodes: ListNode[] = [];
+  const checkedNodes = new Map();
   while (currentNode) {
-    if (checkedNodes.includes(currentNode)) {
+    if (checkedNodes.has(currentNode)) {
       return true;
     } else {
-      checkedNodes.push(currentNode);
+      checkedNodes.set(currentNode, true);
       currentNode = currentNode.next;
     }
   }
