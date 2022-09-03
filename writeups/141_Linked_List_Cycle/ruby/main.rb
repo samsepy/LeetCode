@@ -11,12 +11,12 @@
 # @return {Boolean}
 def hasCycle(head)
   current_node = head
-  checked_nodes = {}
+  checked_nodes = Set.new
   while current_node do
-    if checked_nodes.key?(current_node)
+    if checked_nodes.include?(current_node)
       return true
     else
-      checked_nodes[current_node] = true
+      checked_nodes.add(current_node)
       current_node = current_node.next
     end
   end
