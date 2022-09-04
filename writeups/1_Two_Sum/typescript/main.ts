@@ -1,14 +1,11 @@
 function twoSum(nums: number[], target: number): number[] {
   const h = new Map<number, number>();
-  let a: number[];
-  nums.forEach((num, i) => {
-    const diff: number = target - num;
+  for (let i = 0; i < nums.length; i++) {
+    const diff: number = target - nums[i];
     if (h.has(diff)) {
-      a = new Array(h.get(diff), i);
+      return [h.get(diff), i];
     } else {
-      h.set(num, i);
+      h.set(nums[i], i);
     }
-  });
-
-  return a;
+  }
 }
