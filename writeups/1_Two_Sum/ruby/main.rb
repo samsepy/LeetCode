@@ -6,11 +6,10 @@ def two_sum(nums, target)
 
   h = {}
   nums.each_with_index do |num, i|
-    h[i] = num
-  end
-
-  nums.each_with_index do |num, i|
-    h[i] = nil
-    return [i, h.key(target - num)] if h.value?(target - num)
+    if h.has_key?(target - num)
+      return [i, h.fetch(target - num)]
+    else
+      h[num] = i
+    end
   end
 end
