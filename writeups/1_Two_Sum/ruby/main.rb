@@ -2,8 +2,6 @@
 # @param {Integer} target
 # @return {Integer[]}
 def two_sum(nums, target)
-  return [0, 1] if nums.length == 2
-
   h = {}
   nums.each_with_index do |num, i|
     if h.has_key?(target - num)
