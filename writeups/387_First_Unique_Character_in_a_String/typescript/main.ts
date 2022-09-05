@@ -7,8 +7,10 @@ function firstUniqChar(s: string): number {
       h.set(s[i], 1);
     }
   }
-  for (let i = 0; i < s.length; i++) {
-    if (h.get(s[i]) === 1) return i;
+  for (const [k, v] of h) {
+    if (v == 1) {
+      return s.indexOf(k);
+    }
   }
 
   return -1;
