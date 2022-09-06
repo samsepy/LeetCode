@@ -1,17 +1,12 @@
 function subarraySum(nums: number[], k: number): number {
-  const h = new Map<string, number>();
-  let subArraySum: number = 0;
+  let cumulativeSum: number = 0;
+  let count: number = 0;
+  const h = new Map<number, number>([[0, 1]]);
   for (let i = 0; i < nums.length; i++) {
-    for (let j = i + 1; j <= nums.length; j++) {
-      const subArray: number[] = nums.slice(i, j).sort();
-      const subArrayKey: string = subArray.join("-");
-      h.set(
-        subArrayKey,
-        subArray.reduce((n1: number, n2: number) => n1 + n2),
-      );
-      if (h.get(subArrayKey) === k) subArraySum++;
-    }
+    cumulativeSum += nums[i];
+    count += h.get(cumulativeSum - k) ?? 0;
+    h.set(cumulativeSum, (h.get(cumulativeSum) ?? 0) + 1);
   }
 
-  return subArraySum;
+  return count;
 }
