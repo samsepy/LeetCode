@@ -10,16 +10,18 @@
  * }
  */
 
-function deleteDuplicates(head: ListNode | null): ListNode | null {
-  let currentNode: ListNode | null = head;
+ function deleteDuplicates(head: ListNode | null): ListNode | null {
+  let currentNode: ListNode = head;
+  const h = new Map<number, ListNode>();
   while (currentNode) {
-    if (currentNode.next) {
-      if (currentNode.val === currentNode.next.val) {
-        currentNode.next = currentNode.next.next;
-        deleteDuplicates(currentNode);
-      }
+    if (!h.has(currentNode.val)) {
+      h.set(currentNode.val, currentNode);
     }
     currentNode = currentNode.next;
+  }
+  const nodeSet = [...h.values()];
+  for (let i = 0; i < nodeSet.length; i++) {
+    nodeSet[i].next = nodeSet[i + 1] || null;
   }
 
   return head;
