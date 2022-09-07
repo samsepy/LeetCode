@@ -15,11 +15,9 @@ function deleteDuplicates(head: ListNode | null): ListNode | null {
   const h = new Map<number, ListNode>();
   const duplicateNodeVals: number[] = [];
   while (currentNode) {
-    if (h.has(currentNode.val)) {
-      duplicateNodeVals.push(currentNode.val);
-    } else {
-      h.set(currentNode.val, currentNode);
-    }
+    h.has(currentNode.val)
+      ? duplicateNodeVals.push(currentNode.val)
+      : h.set(currentNode.val, currentNode);
     currentNode = currentNode.next;
   }
   for (let i = 0; i < duplicateNodeVals.length; i++) {
