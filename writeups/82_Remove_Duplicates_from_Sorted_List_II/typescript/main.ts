@@ -25,13 +25,10 @@ function deleteDuplicates(head: ListNode | null): ListNode | null {
   for (let i = 0; i < duplicateNodeVals.length; i++) {
     h.delete(duplicateNodeVals[i]);
   }
-
-  if (h.size === 0) return null;
-
   const nodeSet = [...h.values()];
   for (let i = 0; i < nodeSet.length; i++) {
     nodeSet[i].next = nodeSet[i + 1] || null;
   }
 
-  return nodeSet[0];
+  return nodeSet[0] || null;
 }
