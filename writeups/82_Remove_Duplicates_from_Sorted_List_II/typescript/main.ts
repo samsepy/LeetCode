@@ -23,7 +23,7 @@ function deleteDuplicates(head: ListNode | null): ListNode | null {
   for (let i = 0; i < duplicateNodeVals.length; i++) {
     h.delete(duplicateNodeVals[i]);
   }
-  const nodeSet = [...h.values()];
+  const nodeSet: ListNode[] = [...h.values()];
   for (let i = 0; i < nodeSet.length; i++) {
     nodeSet[i].next = nodeSet[i + 1] || null;
   }
