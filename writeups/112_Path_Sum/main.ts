@@ -20,5 +20,7 @@ function hasPathSum(root: TreeNode | null, targetSum: number): boolean {
     return true;
   }
 
-  return hasPathSum(root.left, remainingSum) || hasPathSum(root.right, remainingSum);
-};
+  return (
+    hasPathSum(root.left, remainingSum) || hasPathSum(root.right, remainingSum)
+  );
+}
