@@ -17,10 +17,10 @@ function levelOrder(root: TreeNode | null): number[][] {
   function bfs(tree: TreeNode | null, level: number): void {
     if (!tree) return;
 
-    if (!h.has(level)) {
-      h.set(level, [tree.val]);
-    } else {
+    if (h.has(level)) {
       (h.get(level) ?? []).push(tree.val);
+    } else {
+      h.set(level, [tree.val]);
     }
     if (tree.left) {
       bfs(tree.left, level + 1);
